@@ -19,8 +19,15 @@ class UpdateController extends \yii\web\Controller
     {
         $path = dirname(__FILE__) . '/..';
         $result = `git -C $path pull`;
+	    if(preg_match('!Already up-to-date.!',$result)){
+		    $msg =['class'=>'info', 'msg'=>'Обновлений нет'];
+		}else{
+		    $msg =['class'=>'success', 'msg'=>'Успешно обновлено'];
+	    }
 	    $info = `git show`;
-        return $this->render('pull',['result'=>$result, 'info'=>$info]);
+	    preg_match('!\n\n(.*)\n\n!',$info,$arr);
+	    print $arr[1];
+        return $this->render('pull',['msg'=>$msg, 'version'=>$arr[1]]);
     }
 
     public function actionMigrate()

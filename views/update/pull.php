@@ -1,10 +1,7 @@
 Результат обновления:
-<div>
-	<code><?=$result?></code>
+<div class="alert alert-<?=$msg['class']?>">
+	<?=$msg['msg']?>
 </div>
-<?php
-preg_match('!\n\n(.*)\n\n!',$info,$arr);
-print $arr[1];
-?>
+
 <hr/>
 При необходимости сфотографируйте это и отправьте разработчикам
