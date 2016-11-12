@@ -27,10 +27,10 @@ function redrawTotalTable() {
 		var body = $('<tbody id="total-table">');
 
 		$.each(result.rowname,function (rowid,row) {
-			body.append($('<tr>',{id:'total-row-'+rowid}));
+			body.append($('<tr>',{id:'total-row-'+rowid,class:'total-row'}).append($('<td>').text(row)));
 		});
 		$('#total-table').replaceWith(body);
-		$.each(result,function (colid,col) {
+		$.each(result.data,function (colid,col) {
 			$.each(col,function (rowid,row) {
 				$('#total-row-'+rowid).append($('<td>',{class:'total-cell-'+rowid+'-'+colid + ' total-column-'+colid}).html(row));
 			})

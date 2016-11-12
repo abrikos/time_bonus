@@ -117,7 +117,7 @@ class Shift extends \yii\db\ActiveRecord
     public function getTotal()
     {
         $table = $this->getTotalTable();
-        return $table['last']['total'];
+        return $table['data']['last']['total'];
         $sum = 0;
         foreach ($table as $cols){
             $sum += $cols['total'];
@@ -166,7 +166,8 @@ class Shift extends \yii\db\ActiveRecord
     public function getDiscounts()
     {
         $table = $this->getTotalTable();
-        return $table['last']['discount'];
+	    //print '<plaintext>';print_r($table);exit;
+        return $table['data']['last']['discount'];
     }
 
     public function getAdministratorPayment()
@@ -420,16 +421,16 @@ class Shift extends \yii\db\ActiveRecord
 
 	    ksort($table);
 
-        $table['rowname']['sum'] = 'Сумма';
-        $table['rowname']['material'] = 'Материалы';
-        $table['rowname']['half'] = '1/2';
-        $table['rowname']['prepayment'] = 'Аванс';
-        $table['rowname']['penalty'] = 'Вычеты';
-        $table['rowname']['bonus'] = 'Премия';
-        $table['rowname']['salary'] = 'Мастеру';
-        $table['rowname']['cash'] = 'Касса';
-        $table['rowname']['discount'] = 'Бонусы';
-        $table['rowname']['total'] = 'Итого';
+        $table2['rowname']['sum'] = 'Сумма';
+        $table2['rowname']['material'] = 'Материалы';
+        $table2['rowname']['half'] = '1/2';
+        $table2['rowname']['prepayment'] = 'Аванс';
+        $table2['rowname']['penalty'] = 'Вычеты';
+        $table2['rowname']['bonus'] = 'Премия';
+        $table2['rowname']['salary'] = 'Мастеру';
+        $table2['rowname']['cash'] = 'Касса';
+        $table2['rowname']['discount'] = 'Бонусы';
+        $table2['rowname']['total'] = 'Итого';
 
 
 
@@ -446,21 +447,7 @@ class Shift extends \yii\db\ActiveRecord
             'total'=> $totalSum,
         ];
 
-
-        return $table;
-        if ($table ) {
-            ksort($table);
-            $table = call_user_func_array(
-                'array_map',
-                [-1 => null] + $table
-            );
-            foreach ($table as $id => $row) {
-                if (!is_array($row)) {
-                    $table[$id] = [0 => $row];
-                }
-            }
-        }
-
-        return $table;
+		$table2['data'] = $table;
+        return $table2;
     }
 }

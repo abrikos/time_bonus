@@ -43,7 +43,7 @@
     font-weight: bolder;
 }
 
-.total-column-rowname{
+.total-row td:first-child{
     font-style:oblique;
 }
 
