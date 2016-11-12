@@ -19,7 +19,7 @@ class UpdateController extends \yii\web\Controller
     {
         $path = dirname(__FILE__) . '/..';
         $result = `git -C $path pull`;
-        return Json::encode(['result'=>$result]);
+        return $this->render('pull',['result'=>$result]);
     }
 
     public function actionMigrate()

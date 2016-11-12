@@ -47,7 +47,7 @@ AppAsset::register($this);
                 ],
             ],
             ['label' => 'Архив', 'url' => ['/archive']],
-            ['label' => 'Обновление', 'url' => 'javascript:siteUpdate()'],
+            ['label' => 'Обновление', 'url' => ['/update/pull']],
             ['label' => 'Графики', 'url' => ['/graphs'], 'visible' => false],
         ],
     ]);
