@@ -27,7 +27,7 @@ class UpdateController extends \yii\web\Controller
 	    $info = `git show`;
 	    preg_match('!\n\n(.*)\n\n!',$info,$arr);
 	    print $arr[1];
-        return $this->render('pull',['msg'=>$msg, 'version'=>$arr[1]]);
+        return $this->render('pull',['msg'=>$msg, 'version'=>$arr[1], 'result'=>$result]);
     }
 
     public function actionMigrate()
