@@ -1,6 +1,6 @@
 <h1>Результат:</h1>
 <div class="alert alert-<?=$msg['class']?>">
-	<?=$msg['msg']?>. Версия <?=$version?>
+	<?=$msg['msg']?>. Версия: <?=$version?>
 </div>
 
 <hr/>
