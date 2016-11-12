@@ -418,7 +418,7 @@ class Shift extends \yii\db\ActiveRecord
             $totalDiscount += $row['discount'];
         }
 
-
+	    ksort($table);
 
         $table['rowname']['sum'] = 'Сумма';
         $table['rowname']['material'] = 'Материалы';
@@ -431,7 +431,7 @@ class Shift extends \yii\db\ActiveRecord
         $table['rowname']['discount'] = 'Бонусы';
         $table['rowname']['total'] = 'Итого';
 
-        ksort($table);
+
 
         $table['last'] = [
             'sum'=> '',
